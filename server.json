@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "productName": "Oculos bonito",
+      "price": 20,
+      "description": "Oculos para usar no sol"
+    },
+    {
+      "id": "2",
+      "productName": "calça da moda",
+      "price": 50,
+      "description": "Calça que veste bem"
+    },
+    {
+      "id": "3",
+      "productName": "Secador de cabelo bom",
+      "price": 40,
+      "description": "Para secar cabelo"
+    },
+    {
+      "id": "4",
+      "productName": "Perfume cheiroso",
+      "price": 40,
+      "description": "perfume que cheira bem"
+    }
+  ],
+
+  "stock": [
+    {
+      "id": "1",
+      "quantity": 5
+    },
+
+    {
+      "id": "2",
+      "quantity": 24
+    },
+    {
+      "id": "3",
+      "quantity": 12
+    },
+    {
+      "id": "4",
+      "quantity": 2
+    }
+  ]
+}

@@ -1,44 +1,46 @@
-import React, { useCallback } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { v4 as uuid } from 'uuid'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
-import TodoListState, {
-  FilterTodoSelector,
-  FilterTodoListState
+import {
+  todoListState,
+  Product,
+  CartItemSelector
 } from '../../recoil/atoms/Todolist'
-
-interface TodoItem {
-  id: string
-  title: string
-  author: string
-  description: string
-}
+import api from '../../services/api'
 
 const TodoList: React.FC = () => {
-  const todoList = useRecoilValue(FilterTodoSelector)
-  const [, setFilter] = useRecoilState(FilterTodoListState)
+  const [todoList, setTodoList] = useState<Product[]>()
+  const [cart, setCart] = useRecoilState(CartItemSelector)
 
-  const filterAuthor = useCallback(
-    (author: string) => {
-      setFilter(author)
+  useEffect(() => {
+    api.get('/products').then(response => setTodoList(response.data))
+  }, [setTodoList])
+
+  const addProduct = useCallback(
+    (product: Product) => {
+      setCart([...cart, product])
     },
-    [setFilter]
+    [setCart, cart]
   )
 
   return (
-    <div>
-      {todoList.map(todo => (
-        <article key={todo.id}>
-          <strong>{todo.title}</strong>
-          <p>{todo.author}</p>
-          <p>{todo.description}</p>
-        </article>
-      ))}
-      <button>Adcionar novo Todo</button>
-      <button onClick={() => filterAuthor('carlos')}>Filtrar por carlos</button>
-      <button onClick={() => filterAuthor('davi')}>Filtrar por Davi</button>
-      <button onClick={() => filterAuthor('all')}>Filtrar por todos</button>
-    </div>
+    <>
+      <div>
+        <br />
+        <React.Suspense fallback={<div>Carregando</div>}>
+          {todoList?.map(product => (
+            <article key={product.id}>
+              <strong>{`Nome: ${product.productName}`}</strong>
+              <p> {`Preço: ${product.price}`}</p>
+              <p>{`Descrição: ${product.description}`}</p>
+              <button onClick={() => addProduct(product)}>
+                Adcionar ao carrinho
+              </button>
+            </article>
+          ))}
+        </React.Suspense>
+      </div>
+    </>
   )
 }
 

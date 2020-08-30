@@ -1,14 +1,14 @@
 import React from 'react'
-import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
+import { RecoilRoot } from 'recoil'
 
-import TodoList from './components/TodoList'
-import ViewTodolist from './components/ViewTodolist'
+import Cart from './components/Cart'
+import { Global } from './styles/global'
 
 const App: React.FC = () => {
   return (
     <RecoilRoot>
-      <TodoList />
-      <ViewTodolist />
+      <Cart />
+      <Global />
     </RecoilRoot>
   )
 }
