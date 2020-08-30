@@ -16,9 +16,10 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  svg {
+  img {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   strong {

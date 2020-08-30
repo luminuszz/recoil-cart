@@ -13,7 +13,7 @@ export const Global = createGlobalStyle`
   #root,html,body {
     height: 100vh;
     font-family: 'Roboto', sans-serif;
-    background: #f5f5f5;
+    background: #ECEFF1;
   }
 
 

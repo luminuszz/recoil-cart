@@ -11,7 +11,9 @@ export const Container = styled.main`
   width: 500px;
   height: 200px;
 
-  background: url(${image}) no-repeat;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%),
+    url(${image}) no-repeat;
+
   background-size: cover;
 `
 
@@ -21,6 +23,7 @@ export const Avatar = styled.div`
   > img {
     width: 88px;
     height: 88px;
+    border-radius: 50%;
   }
 `
 
